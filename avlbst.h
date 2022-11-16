@@ -158,9 +158,10 @@ void AVLTree<Key, Value>::insert (const std::pair<const Key, Value> &new_item)
 		AVLNode<Key,Value> *item = new AVLNode<Key,Value>(new_item.first, new_item.second, nullptr); // item to insert
 		AVLNode<Key, Value> *curr =  static_cast<AVLNode<Key, Value>*>(this->root_);
 		bool finished = false;
-		if (val != nullptr) // node already exists
+	  if (val != nullptr) // node already exists
 		{
 			val->setValue(new_item.second);
+			delete item;
 			return;
 		}
 		if (this->root_ == nullptr) // if empty tree
